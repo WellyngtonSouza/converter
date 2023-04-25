@@ -2,6 +2,7 @@ import express from "express"
 let app = express()
 import {router} from "./routes/route.js"
 
+
 app.set("view engine", "ejs")
 app.set("views", "./templates")
 

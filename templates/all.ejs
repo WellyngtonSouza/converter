@@ -1,12 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>init</h1>
+
+    <form action="http://127.0.0.1:3000/add" method="post">
+
+        <input type="file" name="music" accept=".mp4">
+        <input type="submit">
+
+    </form>
+    
+
+    <!-- <h1>Download</h1>
+    <button id="button">Download</button> -->
 </body>
+
+<script>
+
+    let button = document.querySelector("#button")
+    button.addEventListener("click", () => {
+
+        fetch("http://127.0.0.1:3000/download")
+            .then(res => {
+                return res.blob()
+            }).then(res => {
+                const url = URL.createObjectURL(res);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'seu-arquivo.txt';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            })
+
+    })
+</script>
+
 </html>
