@@ -10,9 +10,9 @@
 
 <body>
 
-    <form action="http://127.0.0.1:3000/add" method="post">
+    <form action="/add" method="post" enctype="multipart/form-data">
 
-        <input type="file" name="music" accept=".mp4">
+        <input type="file" name="music" id="">
         <input type="submit">
 
     </form>
@@ -27,7 +27,7 @@
     let button = document.querySelector("#button")
     button.addEventListener("click", () => {
 
-        fetch("http://127.0.0.1:3000/download")
+        fetch("/download")
             .then(res => {
                 return res.blob()
             }).then(res => {
