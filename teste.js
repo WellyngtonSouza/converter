@@ -1,12 +1,15 @@
-import Ffmpeg from "fluent-ffmpeg";
-import path from "path"
+import { log } from "console"
 import fs from "fs"
 
+let file = "qualquer coisa"
 
+console.log(file)
 
-const command = fs.createReadStream(Ffmpeg(path.join(process.cwd(), "uploads/video.mp4")))
-    .format("mp3")
-    .save(path.join(process.cwd(), "salvos/salvo.mp3"))
-
-
+fs.unlink("./arquivo/teste", (err)=>{
+    if(err){
+        console.log(err)
+    }else{
+        console.log("apagado")
+    }
+})
 
